@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umutekano Logistics | Professional Freight & Delivery</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        :root {
+            color-scheme: dark;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+        }
+        body {
+            margin: 0;
+            background: #07172e;
+            color: #d8e3f0;
+        }
+        .page-wrapper {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 28px 24px 48px;
+        }
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 22px 0;
+        }
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        .brand span {
+            color: #5ab2ff;
+        }
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #d8e3f0;
+            font-weight: 500;
+            transition: color .2s ease, transform .2s ease;
+        }
+        .nav-links a:hover {
+            color: #8ec9ff;
+            transform: translateY(-1px);
+        }
+        .btn-primary,
+        .btn-secondary {
+            border: none;
+            border-radius: 999px;
+            padding: 12px 28px;
+            font-weight: 600;
+        }
+        .btn-primary {
+            background: #2e74ff;
+            color: #ffffff;
+            box-shadow: 0 18px 30px rgba(46, 116, 255, .22);
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, .08);
+            color: #d8e3f0;
+            border: 1px solid rgba(255,255,255,.12);
+        }
+        .hero {
+            display: grid;
+            grid-template-columns: 1.03fr 0.97fr;
+            gap: 38px;
+            align-items: center;
+            min-height: calc(100vh - 140px);
+            padding: 32px 0;
+        }
+        .hero-copy p.overline {
+            margin-bottom: 18px;
+            text-transform: uppercase;
+            letter-spacing: .24em;
+            font-size: .85rem;
+            font-weight: 700;
+            color: #70b8ff;
+        }
+        .hero-copy h1 {
+            margin: 0 0 26px;
+            font-size: clamp(3rem, 5vw, 4.8rem);
+            line-height: 1.02;
+            color: #ffffff;
+        }
+        .hero-copy p.lead {
+            max-width: 660px;
+            font-size: 1.05rem;
+            color: #b8c9dc;
+            margin-bottom: 34px;
+            line-height: 1.8;
+        }
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 38px;
+        }
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(140px, 1fr));
+            gap: 18px;
+        }
+        .hero-stat {
+            background: rgba(255,255,255,.05);
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 20px;
+            padding: 22px 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,.12);
+        }
+        .hero-stat strong {
+            display: block;
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+        .hero-panel {
+            position: relative;
+            border-radius: 32px;
+            background: linear-gradient(135deg, #0e1f44 0%, #122a55 100%);
+            min-height: 560px;
+            padding: 42px;
+            color: #ffffff;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, .28);
+        }
+        .hero-panel::before,
+        .hero-panel::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            opacity: .26;
+            filter: blur(32px);
+        }
+        .hero-panel::before {
+            width: 260px;
+            height: 260px;
+            top: -50px;
+            right: -40px;
+            background: rgba(46, 116, 255, .24);
+        }
+        .hero-panel::after {
+            width: 180px;
+            height: 180px;
+            bottom: -40px;
+            left: -20px;
+            background: rgba(255, 255, 255, .12);
+        }
+        .hero-panel h2 {
+            margin-top: 0;
+            font-size: 2.1rem;
+            line-height: 1.1;
+        }
+        .hero-panel p {
+            margin: 24px 0 0;
+            font-size: 1rem;
+            line-height: 1.85;
+            color: rgba(255,255,255,.86);
+            max-width: 520px;
+        }
+        .section {
+            padding: 64px 0;
+        }
+        .section-heading {
+            margin: 0 0 18px;
+            font-size: 2rem;
+            color: #ffffff;
+        }
+        .section-text {
+            color: #9db5d0;
+            line-height: 1.8;
+            max-width: 760px;
+            margin-bottom: 36px;
+        }
+        .feature-grid,
+        .process-grid,
+        .testimonials-grid {
+            display: grid;
+            gap: 22px;
+        }
+        .feature-grid {
+            grid-template-columns: repeat(3, minmax(240px, 1fr));
+        }
+        .process-grid {
+            grid-template-columns: repeat(4, minmax(180px, 1fr));
+        }
+        .testimonials-grid {
+            grid-template-columns: 1.2fr minmax(260px, .85fr);
+            align-items: start;
+        }
+        .card {
+            background: rgba(255,255,255,.05);
+            border-radius: 26px;
+            border: 1px solid rgba(255,255,255,.1);
+            padding: 28px;
+            box-shadow: 0 24px 60px rgba(0,0,0,.18);
+        }
+        .feature-card h3,
+        .process-card h3,
+        .testimonial-card h3 {
+            margin: 0 0 16px;
+            font-size: 1.18rem;
+            color: #ffffff;
+        }
+        .feature-card p,
+        .process-card p,
+        .testimonial-card p {
+            margin: 0;
+            color: #b7c5d9;
+            line-height: 1.8;
+        }
+        .process-card {
+            background: rgba(255,255,255,.04);
+            border: 1px solid rgba(255,255,255,.09);
+        }
+        .process-step {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: #2e74ff;
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+        .testimonial-card {
+            display: grid;
+            gap: 20px;
+        }
+        .testimonial-card blockquote {
+            margin: 0;
+            font-size: 1.03rem;
+            color: #d9e3f0;
+            line-height: 1.95;
+        }
+        .testimonial-card .author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #ffffff;
+            margin-top: 12px;
+            font-weight: 600;
+        }
+        .testimonial-card .author span {
+            color: #9db5d0;
+            font-size: .95rem;
+            font-weight: 500;
+        }
+        .cta-panel {
+            background: #0a1f3c;
+            color: #ffffff;
+            border-radius: 28px;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 24px;
+            border: 1px solid rgba(255,255,255,.08);
+            box-shadow: 0 24px 80px rgba(0,0,0,.24);
+        }
+        .cta-panel h2 {
+            margin: 0;
+            font-size: 2rem;
+            line-height: 1.12;
+        }
+        .cta-panel p {
+            margin: 14px 0 0;
+            color: rgba(255,255,255,.8);
+            max-width: 580px;
+            line-height: 1.8;
+        }
+        .site-footer {
+            background: #04102a;
+            border-radius: 32px;
+            padding: 48px 40px;
+            margin-top: 32px;
+            color: #c7d5eb;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .footer-logo h3 {
+            margin: 0;
+            color: #ffffff;
+            font-size: 1.1rem;
+        }
+        .footer-logo p {
+            margin: 0;
+            color: #a8b8d6;
+            line-height: 1.8;
+            max-width: 360px;
+        }
+        .footer-column h4 {
+            margin: 0 0 20px;
+            font-size: 1rem;
+            color: #ffffff;
+        }
+        .footer-column a {
+            display: block;
+            margin-bottom: 14px;
+            color: #b8c8e4;
+            text-decoration: none;
+            transition: color .2s ease;
+        }
+        .footer-column a:hover {
+            color: #ffffff;
+        }
+        .footer-bottom {
+            margin-top: 36px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,.08);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            color: #8ea6ca;
+            font-size: .95rem;
+        }
+        @media (max-width: 1024px) {
+            .hero { grid-template-columns: 1fr; }
+            .hero-panel { min-height: 460px; }
+            .feature-grid,
+            .process-grid,
+            .testimonials-grid,
+            .footer-grid { grid-template-columns: 1fr; }
+            .cta-panel { grid-template-columns: 1fr; text-align: left; }
+        }
+        @media (max-width: 700px) {
+            .page-wrapper { padding: 20px 16px 40px; }
+            .topbar { flex-direction: column; align-items: flex-start; }
+            .nav-links { width: 100%; justify-content: space-between; }
+            .hero-copy h1 { font-size: 2.7rem; }
+            .hero-actions { flex-direction: column; align-items: stretch; }
+            .footer-bottom { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <header class="topbar">
+            <a class="brand" href="#">Umutekano <span>Logistics</span></a>
+            <nav class="nav-links" aria-label="Primary navigation">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#why">Why Us</a>
+                <a href="#track">Track</a>
+                <a href="#contact">Contact</a>
+                <a class="btn-secondary" href="login.php">Login</a>
+                <a class="btn-primary" href="register.php">Register</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero" id="home">
+                <div class="hero-copy">
+                    <p class="overline">Enterprise logistics made simple</p>
+                    <h1>Deliver every shipment with reliability, speed, and complete visibility.</h1>
+                    <p class="lead">Umutekano Logistics brings together fleet dispatch, shipment tracking, warehouse control, and payment management in one polished platform.</p>
+                    <div class="hero-actions">
+                        <a class="btn-primary" href="register.php">Book a Shipment</a>
+                        <a class="btn-secondary" href="track.php">Track a Package</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <strong>320+</strong>
+                            Daily shipments managed.
+                        </div>
+                        <div class="hero-stat">
+                            <strong>98%</strong>
+                            Fleet delivery accuracy.
+                        </div>
+                        <div class="hero-stat">
+                            <strong>30m</strong>
+                            Average response time.
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-panel">
+                    <h2>Professional logistics services for growing operations</h2>
+                    <p>From order registration to final delivery, our platform provides the controls and analytics your team needs to run logistics with confidence.</p>
+                </div>
+            </section>
+
+            <section class="section" id="services">
+                <div class="section-header">
+                    <h2 class="section-heading">What we offer</h2>
+                    <p class="section-text">An end-to-end logistics solution designed to support customers, drivers, warehouses and managers across every shipment stage.</p>
+                </div>
+                <div class="feature-grid">
+                    <article class="card feature-card">
+                        <h3>Order & shipment management</h3>
+                        <p>Schedule deliveries, manage packages and keep every booking organized from pickup to handoff.</p>
+                    </article>
+                    <article class="card feature-card">
+                        <h3>Driver dispatch & routing</h3>
+                        <p>Assign drivers, optimize routes, and ensure the right vehicle is on the right task every day.</p>
+                    </article>
+                    <article class="card feature-card">
+                        <h3>Warehouse visibility</h3>
+                        <p>Monitor inventory movement, storage capacity and warehouse activity with clear operational controls.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section" id="why">
+                <div class="section-header">
+                    <h2 class="section-heading">Why choose Umutekano Logistics?</h2>
+                    <p class="section-text">A professional logistics partner that combines discipline, technology and customer trust to keep your operations moving.</p>
+                </div>
+                <div class="process-grid">
+                    <article class="card process-card">
+                        <div class="process-step">1</div>
+                        <h3>Intelligent planning</h3>
+                        <p>Centralize all shipment details, routes and schedules with a streamlined workflow.</p>
+                    </article>
+                    <article class="card process-card">
+                        <div class="process-step">2</div>
+                        <h3>Live monitoring</h3>
+                        <p>Track deliveries in real time with constant status updates and alerts.</p>
+                    </article>
+                    <article class="card process-card">
+                        <div class="process-step">3</div>
+                        <h3>Secure billing</h3>
+                        <p>Manage payments, invoices and driver settlements through a trusted digital process.</p>
+                    </article>
+                    <article class="card process-card">
+                        <div class="process-step">4</div>
+                        <h3>Operational insight</h3>
+                        <p>Review dashboards and reports that reveal cost drivers, on-time metrics and capacity usage.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section" id="track">
+                <div class="section-header">
+                    <h2 class="section-heading">Track shipments instantly</h2>
+                    <p class="section-text">Use our tracking tools to see the current location of your shipment, expected delivery window, and any route updates in one place.</p>
+                </div>
+                <div class="card">
+                    <p style="margin:0 0 18px; color:#3b4f6f;">Open the tracking page to enter a shipment reference and receive immediate visibility for your delivery.</p>
+                    <a class="btn-secondary" href="track.php">Go to Tracking</a>
+                </div>
+            </section>
+
+            <section class="section" id="testimonials">
+                <div class="section-header">
+                    <h2 class="section-heading">Trusted by operations teams</h2>
+                    <p class="section-text">Our customers rely on consistent logistics delivery and easy coordination across drivers, warehouses and finance.</p>
+                </div>
+                <div class="testimonials-grid">
+                    <article class="card testimonial-card">
+                        <blockquote>“Umutekano gives our team fast, reliable shipment oversight. We now manage deliveries with much less manual follow-up and better performance.”</blockquote>
+                        <div class="author">
+                            <strong>Alice N.</strong>
+                            <span>Operations Manager</span>
+                        </div>
+                    </article>
+                    <div class="card" style="padding: 34px;">
+                        <div class="pill-tag">Safe · Punctual · Insightful</div>
+                        <h3 style="margin:20px 0 12px; color:#0d2b55;">A complete logistics platform</h3>
+                        <p style="margin:0; color:#4f5d72; line-height:1.8;">Support your entire freight flow while keeping communications, driver assignments, and financial records in a single modern interface.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="cta-panel">
+                    <div>
+                        <h2>Ready to improve your delivery operations?</h2>
+                        <p>Get started with Umutekano Logistics today and empower your business with a smarter shipment platform.</p>
+                    </div>
+                    <div>
+                        <a class="btn-primary" href="register.php">Create Account</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer" id="contact">
+            <div class="footer-grid">
+                <div class="footer-logo">
+                    <h3>Umutekano Logistics</h3>
+                    <p>Trusted logistics for businesses that value safety, punctuality, and professional tracking across every delivery.</p>
+                    <div style="display:flex; gap:12px;">
+                        <a href="mailto:info@umutekano.logistics" style="color:#ffffff; text-decoration:none; font-size:1.1rem;">✉️</a>
+                        <a href="tel:+250000000000" style="color:#ffffff; text-decoration:none; font-size:1.1rem;">📞</a>
+                        <span style="color:#b8c8e4; font-size:1.1rem;">💬</span>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#services">Services</a>
+                    <a href="#why">Why Us</a>
+                    <a href="#track">Track</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <a href="#">Help Center</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#contact">Contact Us</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <a href="mailto:info@umutekano.logistics">info@umutekano.logistics</a>
+                    <a href="tel:+250000000000">+250 000 000 000</a>
+                    <a href="#">Kigali, Rwanda</a>
+                    <a href="#">Mon–Sat, 6am–8pm</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Umutekano Logistics. All rights reserved.</span>
+                <span>Built with professional logistics design in mind.</span>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
